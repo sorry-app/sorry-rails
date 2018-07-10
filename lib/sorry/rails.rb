@@ -14,12 +14,12 @@ module Sorry
         class << self
             # Attr to store the configuration.
             attr_accessor :configuration
-       
+
             # Allow configuration by block.
             def configure
                 # Singleton the config instance.
                 self.configuration ||= Configuration.new
-                
+
                 # Yield the config block.
                 yield(configuration)
 

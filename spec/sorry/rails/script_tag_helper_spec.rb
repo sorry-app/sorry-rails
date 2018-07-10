@@ -13,7 +13,7 @@ RSpec.describe Sorry::Rails::ScriptTagHelper, type: :helper do
         # Expect string return.
         it { is_expected.to be_a(String) }
         it { is_expected.to be_html_safe }
-        it { 
+        it {
             # Expect an asynchronous JavaScript tag.
             is_expected.to have_tag('script[async]', :with => {
                 # Pointing at the latest version.

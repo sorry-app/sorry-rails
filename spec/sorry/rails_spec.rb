@@ -49,7 +49,7 @@ RSpec.describe Sorry::Rails do
             # It has not config.
             it { is_expected.to be_nil }
         end
-    end    
+    end
 
     describe 'version number' do
         # Get version for testing.
@@ -58,5 +58,5 @@ RSpec.describe Sorry::Rails do
         # Should be present.
         it { is_expected.not_to be_nil }
     end
-    
+
 end
