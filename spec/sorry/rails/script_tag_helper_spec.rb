@@ -61,7 +61,7 @@ RSpec.describe Sorry::Rails::ScriptTagHelper, type: :helper do
                         # Check for the script tag.
                         is_expected.to have_tag(subscriber_payload_tag) do
                             # Check the serializer JSON payload.
-                            with_text(/window.SorryAPIOptions = { \'subscriber\': #{subscriber_payload} };/)
+                            with_text(/window.SorryAPIOptions = { \"subscriber\": #{subscriber_payload} };/)
                         end
                     end
                 end
