@@ -12,10 +12,10 @@ module Sorry
             #
             # Generate the Sorry Website Plugin script
             # tag to display status notices to the user
-            # and register them as a subscriber.
+            # and register them as a subscriber.
             #
             def sorry_script_tag(options = {})
-                # Merge configuration in options.
+                # Merge configuration in options.
                 options.reverse_merge!(Sorry::Rails.configuration)
 
                 # Include the payload tag and the include
@@ -24,12 +24,12 @@ module Sorry
             end
 
             def sorry_script_include_tag(options)
-                # Build the JavaScript tag for the plugin include.
-                # Use the latest JS version defined in the plugin.
+                # Build the JavaScript tag for the plugin include.
+                # Use the latest JS version defined in the plugin.
                 javascript_include_tag "https://code.sorryapp.com/status-bar/#{Sorry::Rails::PLUGIN_VERSION}/status-bar.min.js",
-                    # Define the pages identity.
+                    # Define the pages identity.
                     data: { :for => options.fetch('page_id') },
-                    # Load asynchronously.
+                    # Load asynchronously.
                     async: true
             end
 
@@ -37,19 +37,19 @@ module Sorry
                 # Get the method name
                 current_user_method = options.fetch('current_user_method')
 
-                # See if the current user is signed in, so we can
+                # See if the current user is signed in, so we can
                 # include them as a subscriber.
                 if respond_to?(current_user_method) && send(current_user_method).present?
-                    # Get the current user.
+                    # Get the current user.
                     current_request_user = send(current_user_method)
 
                     # Serialize the user into a subscriber payload.
                     subscriber_payload = SubscriberSerializer.new(current_request_user).to_json
 
                     # We have a user method, let's include the JS payload
-                    # object for them as a subscriber.
+                    # object for them as a subscriber.
                     javascript_tag id: 'sorry-subscriber-data' do
-                        # Include the subscriber payload on the window.
+                        # Include the subscriber payload on the window.
                         "window.SorryAPIOptions = { \"subscriber\": #{subscriber_payload} };".html_safe # rubocop:disable OutputSafety
                     end
                 end

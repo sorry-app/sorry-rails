@@ -5,16 +5,16 @@ RSpec.describe Sorry::Rails::SubscriberSerializer do
     let(:current_user) { double('User') }
 
     describe "#to_json" do
-        # Loop over the attributes to check each.
+        # Loop over the attributes to check each.
         described_class::SERIALIZEABLE_ATTRIBUTES.each do |attribute|
             # Context for this attribute.
             context "when serializing #{attribute}" do
-                # Get the JSON hash for testing, only include
-                # a single attribute at a time, easier mocking for tests.
+                # Get the JSON hash for testing, only include
+                # a single attribute at a time, easier mocking for tests.
                 subject { described_class.new(current_user).to_json([attribute]) }
 
                 context "the resulting value" do
-                    # Get the payload result for testing.
+                    # Get the payload result for testing.
                     subject { JSON.parse(super()).fetch(attribute.to_s) }
 
                     context "when customized" do

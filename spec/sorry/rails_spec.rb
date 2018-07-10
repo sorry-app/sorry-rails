@@ -7,7 +7,7 @@ RSpec.describe Sorry::Rails do
         context "when passed a block" do
             subject do
                 # Invoke the configure with
-                # a block, setting a mock Page ID.
+                # a block, setting a mock Page ID.
                 described_class.configure do |config|
                     # Set the mock page identity.
                     config.page_id = page_id
@@ -46,7 +46,7 @@ RSpec.describe Sorry::Rails do
             # Put the configuration in place.
             before(:each) { described_class.configuration = nil }
 
-            # It has not config.
+            # It has not config.
             it { is_expected.to be_nil }
         end
     end    

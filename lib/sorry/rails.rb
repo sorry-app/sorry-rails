@@ -7,15 +7,15 @@ require 'sorry/rails/version'
 module Sorry
     module Rails
 
-        # Define the JS plugin version to be used
+        # Define the JS plugin version to be used
         # by the script tag generator.
         PLUGIN_VERSION = '4.latest'.freeze
 
         class << self
-            # Attr to store the configuration.
+            # Attr to store the configuration.
             attr_accessor :configuration
        
-            # Allow configuration by block.
+            # Allow configuration by block.
             def configure
                 # Singleton the config instance.
                 self.configuration ||= Configuration.new

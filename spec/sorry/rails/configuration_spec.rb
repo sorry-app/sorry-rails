@@ -8,7 +8,7 @@ RSpec.describe Sorry::Rails::Configuration do
         subject { super().current_user_method }
 
         context "by default" do
-            # Check the Devise focussed default.
+            # Check the Devise focussed default.
             it { is_expected.to eq(:current_user) }
         end
     end

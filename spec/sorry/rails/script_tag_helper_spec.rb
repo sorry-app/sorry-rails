@@ -10,13 +10,13 @@ RSpec.describe Sorry::Rails::ScriptTagHelper, type: :helper do
         # Get the resulting tag for testing.
         subject { sorry_script_tag({ 'page_id' => page_id }) }
 
-        # Expect string return.
+        # Expect string return.
         it { is_expected.to be_a(String) }
         it { is_expected.to be_html_safe }
         it { 
-            # Expect an asynchronous JavaScript tag.
+            # Expect an asynchronous JavaScript tag.
             is_expected.to have_tag('script[async]', :with => {
-                # Pointing at the latest version.
+                # Pointing at the latest version.
                 :src => "https://code.sorryapp.com/status-bar/#{Sorry::Rails::PLUGIN_VERSION}/status-bar.min.js",
                 # With the configured page identity.
                 :'data-for' => page_id
@@ -34,7 +34,7 @@ RSpec.describe Sorry::Rails::ScriptTagHelper, type: :helper do
 
             context "with current_user method" do
                 # Make the configured user method available, and
-                # have it return the mock user.
+                # have it return the mock user.
                 before(:each) do
                     # Mock the method onto the test class.
                     allow(self).to receive(Sorry::Rails.configuration.current_user_method).and_return(mock_user)

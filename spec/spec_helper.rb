@@ -11,16 +11,16 @@ RSpec.configure do |config|
     config.disable_monkey_patching!
 
     config.expect_with :rspec do |c|
-        # Use more modern syntax.
+        # Use more modern syntax.
         c.syntax = :expect
     end
 
-    # Reset config singleton after each test.
+    # Reset config singleton after each test.
     config.around(:each) do |example|
         # Create a default plugin config.
         Sorry::Rails.configuration ||= Sorry::Rails::Configuration.new
 
-        # Run the examples.
+        # Run the examples.
         example.run
 
         # Remove the config.

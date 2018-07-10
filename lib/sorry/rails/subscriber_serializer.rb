@@ -19,10 +19,10 @@ module Sorry
             end
 
             def to_json(serializeable_attributes = SERIALIZEABLE_ATTRIBUTES)
-                # Check the serializeable attributes are allowed.
+                # Check the serializeable attributes are allowed.
                 serializeable_attributes!(serializeable_attributes)
 
-                # Start with an empty attributes hash
+                # Start with an empty attributes hash
                 attributes = {}
 
                 # Loop over the collection or attributes
@@ -32,8 +32,8 @@ module Sorry
                     attributes[attribute] = attribute_value(attribute)
                 end
 
-                # Serialize the collection
-                # remove any attributes not serialized.
+                # Serialize the collection
+                # remove any attributes not serialized.
                 attributes.compact.to_json
             end
 
@@ -45,8 +45,8 @@ module Sorry
 
                 #
                 # The value of the attribute can come
-                # from a proc, or from a custom field, or
-                # by looking for a direct attribute on the user.
+                # from a proc, or from a custom field, or
+                # by looking for a direct attribute on the user.
                 #
                 def attribute_value(attribute)
                     # Get the configured method for the attribute.
@@ -54,7 +54,7 @@ module Sorry
 
                     # See if the method is a proc.
                     if attribute_method.respond_to?(:call)
-                        # It's a proc, call it with the model.
+                        # It's a proc, call it with the model.
                         attribute_method.call(@current_user)
                     # See if the instance responds to it.
                     elsif @current_user.respond_to?(attribute_method)
@@ -71,7 +71,7 @@ module Sorry
                 def serializeable_attributes!(serializeable_attributes)
                     # See if the attributes are serializeable.
                     unless serializeable_attributes?(serializeable_attributes)
-                        # They're not, so throw an error.
+                        # They're not, so throw an error.
                         raise UnserializableAttributeError.new("The attributes (#{(serializeable_attributes - SERIALIZEABLE_ATTRIBUTES)}) are not included in the approved list: #{SERIALIZEABLE_ATTRIBUTES}")
                     end
                 end
