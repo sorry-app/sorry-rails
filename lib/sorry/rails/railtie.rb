@@ -1,6 +1,6 @@
 module Sorry
     module Rails
-        class Railtie < Rails::Railtie
+        class Railtie < ::Rails::Railtie
 
             # On initialization.
             initializer 'sorry-rails' do

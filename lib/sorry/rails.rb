@@ -1,7 +1,7 @@
 require 'sorry/rails/configuration'
 require 'sorry/rails/script_tag_helper'
 require 'sorry/rails/subscriber_serializer'
-require 'sorry/rails/railtie' if defined?(Rails::Railtie)
+require 'sorry/rails/railtie' if defined?(::Rails::Railtie)
 require 'sorry/rails/version'
 
 module Sorry
