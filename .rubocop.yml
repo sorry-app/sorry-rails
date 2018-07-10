@@ -5,3 +5,8 @@ Layout/IndentationWidth:
 Metrics/LineLength:
   # Default line length too shore.
   Max: 200
+
+Metrics/BlockLength:
+  Exclude:
+    # Allow long blocks in tests.
+    - 'spec/**/*.rb'
