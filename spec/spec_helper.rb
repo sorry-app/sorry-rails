@@ -1,6 +1,7 @@
 require 'bundler/setup'
 require 'faker'
 require 'sorry/rails'
+require 'rspec-html-matchers'
 
 RSpec.configure do |config|
     # Enable flags like --only-failures and --next-failure
@@ -25,4 +26,7 @@ RSpec.configure do |config|
         # Remove the config.
         Sorry::Rails.configuration = nil
     end
+
+    # Include have_tag matchers.
+    config.include RSpecHtmlMatchers
 end

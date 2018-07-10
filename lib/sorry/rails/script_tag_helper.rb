@@ -1,7 +1,14 @@
+require "active_support/all"
+require "action_view"
+
 module Sorry
     module Rails
         module ScriptTagHelper
 
+            # Base rails helpers we utilize.
+            include ActionView::Context
+            include ActionView::Helpers::AssetTagHelper
+            include ActionView::Helpers::JavaScriptHelper
             #
             # Generate the Sorry Website Plugin script
             # tag to display status notices to the user
