@@ -28,7 +28,7 @@ module Sorry
                 # Use the latest JS version defined in the plugin.
                 javascript_include_tag 'https://code.sorryapp.com/status-bar/#{Sorry::Rails::PLUGIN_VERSION}/status-bar.min.js',
                     # Define the pages identity.
-                    data: { :for => options.fetch('page_id') },
+                    data: { for: options.fetch('page_id') },
                     # Load asynchronously.
                     async: true
             end

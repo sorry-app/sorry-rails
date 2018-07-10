@@ -15,11 +15,11 @@ RSpec.describe Sorry::Rails::ScriptTagHelper, type: :helper do
         it { is_expected.to be_html_safe }
         it {
             # Expect an asynchronous JavaScript tag.
-            is_expected.to have_tag('script[async]', :with => {
+            is_expected.to have_tag('script[async]', with: {
                 # Pointing at the latest version.
-                :src => "https://code.sorryapp.com/status-bar/#{Sorry::Rails::PLUGIN_VERSION}/status-bar.min.js",
+                src: "https://code.sorryapp.com/status-bar/#{Sorry::Rails::PLUGIN_VERSION}/status-bar.min.js",
                 # With the configured page identity.
-                :'data-for' => page_id
+                'data-for': page_id
             })
         }
 
