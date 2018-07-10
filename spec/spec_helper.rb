@@ -1,4 +1,5 @@
 require 'bundler/setup'
+require 'faker'
 require 'sorry/rails'
 
 RSpec.configure do |config|
@@ -10,5 +11,17 @@ RSpec.configure do |config|
 
     config.expect_with :rspec do |c|
         c.syntax = :expect
+    end
+
+    # Reset config singleton after each test.
+    config.around(:each) do |example|
+        # Create a default plugin config.
+        Sorry::Rails.configuration ||= Sorry::Rails::Configuration.new
+
+        # Run the examples.
+        example.run
+
+        # Remove the config.
+        Sorry::Rails.configuration = nil
     end
 end
