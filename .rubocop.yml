@@ -1,3 +1,5 @@
+inherit_from: .rubocop_todo.yml
+
 Layout/IndentationWidth:
   # Number of spaces for each indentation level - iCanHazTabs?
   Width: 4
