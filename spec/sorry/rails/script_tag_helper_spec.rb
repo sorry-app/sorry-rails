@@ -6,7 +6,7 @@ RSpec.describe Sorry::Rails::ScriptTagHelper, type: :helper do
     # Mock a page identity to be used.
     let(:page_id) { Faker::Lorem.characters(8) }
 
-    describe "#sorry_script_tag" do
+    describe '#sorry_script_tag' do
         # Get the resulting tag for testing.
         subject { sorry_script_tag({ 'page_id' => page_id }) }
 
@@ -23,16 +23,16 @@ RSpec.describe Sorry::Rails::ScriptTagHelper, type: :helper do
             })
         }
 
-        describe "subscriber_payload" do
+        describe 'subscriber_payload' do
             # The subscribe payload tag id.
             let(:subscriber_payload_tag) { 'script[id="sorry-subscriber-data"]' }
 
-            context "without current_user method" do
+            context 'without current_user method' do
                 # IT should not include the payload
                 it { is_expected.to_not have_tag(subscriber_payload_tag) }
             end
 
-            context "with current_user method" do
+            context 'with current_user method' do
                 # Make the configured user method available, and
                 # have it return the mock user.
                 before(:each) do
@@ -40,7 +40,7 @@ RSpec.describe Sorry::Rails::ScriptTagHelper, type: :helper do
                     allow(self).to receive(Sorry::Rails.configuration.current_user_method).and_return(mock_user)
                 end
 
-                context "and no user" do
+                context 'and no user' do
                     # Mock no user.
                     let(:mock_user) { nil }
 
@@ -48,20 +48,20 @@ RSpec.describe Sorry::Rails::ScriptTagHelper, type: :helper do
                     it { is_expected.to_not have_tag(subscriber_payload_tag) }
                 end
 
-                context "and user is signed in" do
+                context 'and user is signed in' do
                     # Mock a user object with an email address
                     # we can pretend is signed in.
-                    let(:mock_user) { double("User", email: Faker::Internet.email) }
+                    let(:mock_user) { double('User', email: Faker::Internet.email) }
 
                     # Expect the subscriber payload
-                    it "contains the expect payload tag" do
+                    it 'contains the expect payload tag' do
                         # Mock the JSON payload for the user.
                         subscriber_payload = Sorry::Rails::SubscriberSerializer.new(mock_user).to_json
 
                         # Check for the script tag.
                         is_expected.to have_tag(subscriber_payload_tag) do
                             # Check the serializer JSON payload.
-                            with_text(/window.SorryAPIOptions = { \"subscriber\": #{subscriber_payload} };/)
+                            with_text(/window.SorryAPIOptions = { \'subscriber\': #{subscriber_payload} };/)
                         end
                     end
                 end

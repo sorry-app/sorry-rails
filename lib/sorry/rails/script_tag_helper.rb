@@ -1,5 +1,5 @@
-require "active_support/all"
-require "action_view"
+require 'active_support/all'
+require 'action_view'
 
 module Sorry
     module Rails
@@ -26,7 +26,7 @@ module Sorry
             def sorry_script_include_tag(options)
                 # Build the JavaScript tag for the plugin include.
                 # Use the latest JS version defined in the plugin.
-                javascript_include_tag "https://code.sorryapp.com/status-bar/#{Sorry::Rails::PLUGIN_VERSION}/status-bar.min.js",
+                javascript_include_tag 'https://code.sorryapp.com/status-bar/#{Sorry::Rails::PLUGIN_VERSION}/status-bar.min.js',
                     # Define the pages identity.
                     data: { :for => options.fetch('page_id') },
                     # Load asynchronously.
@@ -50,7 +50,7 @@ module Sorry
                     # object for them as a subscriber.
                     javascript_tag id: 'sorry-subscriber-data' do
                         # Include the subscriber payload on the window.
-                        "window.SorryAPIOptions = { \"subscriber\": #{subscriber_payload} };".html_safe # rubocop:disable OutputSafety
+                        'window.SorryAPIOptions = { \'subscriber\': #{subscriber_payload} };'.html_safe # rubocop:disable OutputSafety
                     end
                 end
             end

@@ -1,10 +1,10 @@
 RSpec.describe Sorry::Rails do
 
-    describe "#configure" do
+    describe '#configure' do
         # Mock some detailed to pass to the config.
         let(:page_id) { Faker::Lorem.characters(8) }
 
-        context "when passed a block" do
+        context 'when passed a block' do
             subject do
                 # Invoke the configure with
                 # a block, setting a mock Page ID.
@@ -17,7 +17,7 @@ RSpec.describe Sorry::Rails do
             # Check a configuration instance records.
             it { is_expected.to be_a(described_class::Configuration) }
 
-            describe "the configured page_id" do
+            describe 'the configured page_id' do
                 # Get the page if for testing.
                 subject { super().page_id }
 
@@ -27,11 +27,11 @@ RSpec.describe Sorry::Rails do
         end
     end
 
-    describe "#configuration" do
+    describe '#configuration' do
         # Get the configuration for testing.
         subject { described_class.configuration }
 
-        context "when previously configured" do
+        context 'when previously configured' do
             # Mock the configuration.
             let(:configuration) { described_class::Configuration.new }
 
@@ -42,7 +42,7 @@ RSpec.describe Sorry::Rails do
             it { is_expected.to be(configuration) }
         end
 
-        context "when not configured" do
+        context 'when not configured' do
             # Put the configuration in place.
             before(:each) { described_class.configuration = nil }
 
@@ -51,7 +51,7 @@ RSpec.describe Sorry::Rails do
         end
     end    
 
-    describe "version number" do
+    describe 'version number' do
         # Get version for testing.
         subject { described_class::VERSION }
 

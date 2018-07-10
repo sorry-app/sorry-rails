@@ -4,7 +4,7 @@ RSpec.describe Sorry::Rails::SubscriberSerializer do
     # during the tests.
     let(:current_user) { double('User') }
 
-    describe "#to_json" do
+    describe '#to_json' do
         # Loop over the attributes to check each.
         described_class::SERIALIZEABLE_ATTRIBUTES.each do |attribute|
             # Context for this attribute.
@@ -13,15 +13,15 @@ RSpec.describe Sorry::Rails::SubscriberSerializer do
                 # a single attribute at a time, easier mocking for tests.
                 subject { described_class.new(current_user).to_json([attribute]) }
 
-                context "the resulting value" do
+                context 'the resulting value' do
                     # Get the payload result for testing.
                     subject { JSON.parse(super()).fetch(attribute.to_s) }
 
-                    context "when customized" do
+                    context 'when customized' do
                         # Mock the custom method result.
                         let(:custom_method_result) { Faker::Lorem.sentence }
 
-                        context "when a customer proc" do
+                        context 'when a customer proc' do
                             # Stage the user/config for the method.
                             before(:each) do
                                 # Allow the user to receive the method.
@@ -35,7 +35,7 @@ RSpec.describe Sorry::Rails::SubscriberSerializer do
                             it { is_expected.to eq(custom_method_result) }
                         end
 
-                        context "when a custom method name" do
+                        context 'when a custom method name' do
                             # Mock a custom method name.
                             let(:custom_method_name) { Faker::Lorem.word.to_sym }
 
@@ -53,7 +53,7 @@ RSpec.describe Sorry::Rails::SubscriberSerializer do
                         end
                     end
 
-                    context "when the default method" do
+                    context 'when the default method' do
                         # Mock the attribute method on the model.
                          before(:each) { allow(current_user).to receive(attribute).and_return(Faker::Lorem.sentence) }
 
@@ -61,11 +61,11 @@ RSpec.describe Sorry::Rails::SubscriberSerializer do
                         it { is_expected.to eq(current_user.send(attribute)) }
                     end
 
-                    context "when no matching method on model" do
+                    context 'when no matching method on model' do
                         # Remove the method from the model.
                         before(:each) { allow(current_user).to receive(:respond_to?).with(attribute).and_return(false) }
 
-                        it "doesn't include the attribute" do
+                        it 'does not include the attribute' do
                             # Expect no matching key in the hash.
                             expect { subject }.to raise_error(KeyError)
                         end
@@ -74,12 +74,12 @@ RSpec.describe Sorry::Rails::SubscriberSerializer do
             end
         end
 
-        context "when passed non-serializeable attribute name" do
+        context 'when passed non-serializeable attribute name' do
             # Ask for JSON with a random attribute name not
             # found in the SERIALIZEABLE_ATTRIBUTES constant.
             subject { described_class.new(current_user).to_json([Faker::Lorem.word]) }
 
-            it "raises a custom error" do
+            it 'raises a custom error' do
                 # Expect an error to be thrown.
                 expect { subject }.to raise_error(Sorry::Rails::SubscriberSerializer::UnserializableAttributeError)
             end
