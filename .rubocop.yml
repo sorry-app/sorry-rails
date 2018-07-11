@@ -22,3 +22,6 @@ Layout/EmptyLinesAroundModuleBody:
 
 Layout/AlignParameters:
   EnforcedStyle: with_fixed_indentation
+
+Layout/IndentHash:
+  EnforcedStyle: consistent
