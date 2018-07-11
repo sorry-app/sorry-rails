@@ -102,4 +102,4 @@ For more information on SemVer, please visit <http://semver.org/>.
 
 ## Copyright
 
-&copy; Copyright - See [LICENSE](LICENSE) for details.
+&copy; Copyright - See [LICENSE](LICENSE.txt) for details.
