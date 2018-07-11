@@ -1,21 +1,17 @@
 inherit_from: .rubocop_todo.yml
 
 Layout/IndentationWidth:
-  # Number of spaces for each indentation level - iCanHazTabs?
   Width: 4
 
 Metrics/LineLength:
-  # Default line length too shore.
   Max: 200
 
 Metrics/BlockLength:
   Exclude:
-    # Allow long blocks in tests.
     - 'spec/**/*.rb'
 
 Layout/EmptyLinesAroundBlockBody:
   Exclude:
-    # Allow gapped blocks in tests.
     - 'spec/**/*.rb'
 
 Layout/EmptyLinesAroundClassBody:
@@ -23,3 +19,6 @@ Layout/EmptyLinesAroundClassBody:
 
 Layout/EmptyLinesAroundModuleBody:
   EnforcedStyle: empty_lines_except_namespace
+
+Layout/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
