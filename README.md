@@ -1,6 +1,6 @@
 # Sorry™ - Rails
 
-> A Rails gem to add the [Sorry™](https://www.sorryapp.com/) website plugin to your application. Easily display notices from your status page to your users, and register them as subscribers to receive updates when the particular parts of your application they use are experiencing issues.
+> A Rails gem to add the [Sorry™ Website Plugin](https://github.com/sorry-app/status-bar) to your application. Easily display notices from your status page to your users, and register them as subscribers to receive updates when the particular parts of your application they use are experiencing issues.
 
 ## Installation
 
@@ -43,7 +43,7 @@ You'll most likely want to add this to `application.html.erb` so it displays on 
 
 By default the plugin plays nicely with [Devise](https://github.com/plataformatec/devise) by looking for a method called `current_user`, if this method returns an object with an `email` attribute they are passed along as a subscriber, so they'll appear in your subscribers list.
 
-#### Custom current user method
+### Custom current user method
 
 If you don't use Devise, or it's default `current_user` method, you can customize the method name in your initializer.
 
@@ -53,7 +53,7 @@ config.current_user_method = :logged_in_user
 
 Pass a symbol which represents the method name, and we'll call that.
 
-#### Subscribing to specific components (Established Plan Only)
+### Subscribing to specific components (Established plan only)
 
 Sometimes users don't utilize all of your application, and they'll only want updates about incidents which affect the parts they actually use. For example, if one of our customers uses our Mailgun integration, but Sendgrid is currently experiencing issues, they don't need to know.
 
