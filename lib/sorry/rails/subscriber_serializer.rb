@@ -10,7 +10,7 @@ module Sorry
         class SubscriberSerializer
 
             # Define serializeable fields.
-            SERIALIZEABLE_ATTRIBUTES = [:email, :component_ids].freeze
+            SERIALIZEABLE_ATTRIBUTES = %i[email component_ids].freeze
 
             #
             # Decorator which receives the current user
