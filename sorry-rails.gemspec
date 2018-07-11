@@ -14,13 +14,13 @@ Gem::Specification.new do |spec|
     spec.license       = 'MIT'
 
     spec.add_development_dependency 'bundler'
+    spec.add_development_dependency 'faker'
     spec.add_development_dependency 'rake'
     spec.add_development_dependency 'rspec'
     spec.add_development_dependency 'rspec-html-matchers'
     spec.add_development_dependency 'rubocop'
-    spec.add_development_dependency 'faker'
 
-    spec.add_dependency 'hashie', '~> 2.0'
-    spec.add_dependency 'activesupport'
     spec.add_dependency 'actionview'
+    spec.add_dependency 'activesupport'
+    spec.add_dependency 'hashie', '~> 2.0'
 end
