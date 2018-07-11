@@ -28,7 +28,7 @@ RSpec.describe Sorry::Rails::SubscriberSerializer do
                                 allow(current_user).to receive(:value_through_proc).and_return(custom_method_result)
 
                                 # Mock the method as a Proc.
-                                Sorry::Rails.configuration.send(:"#{attribute}_method=", Proc.new { |user| user.value_through_proc })
+                                Sorry::Rails.configuration.send(:"#{attribute}_method=", proc { |user| user.value_through_proc })
                             end
 
                             # Expect the custom result.
