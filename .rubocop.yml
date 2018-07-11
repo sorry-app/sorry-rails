@@ -25,3 +25,6 @@ Layout/AlignParameters:
 
 Layout/IndentHash:
   EnforcedStyle: consistent
+
+Style/GuardClause:
+  Enabled: false
