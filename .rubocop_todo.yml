@@ -21,17 +21,6 @@ Layout/CommentIndentation:
     - 'lib/sorry/rails/version.rb'
     - 'spec/sorry/rails/subscriber_serializer_spec.rb'
 
-# Offense count: 8
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: empty_lines, no_empty_lines
-Layout/EmptyLinesAroundBlockBody:
-  Exclude:
-    - 'spec/sorry/rails/configuration_spec.rb'
-    - 'spec/sorry/rails/script_tag_helper_spec.rb'
-    - 'spec/sorry/rails/subscriber_serializer_spec.rb'
-    - 'spec/sorry/rails_spec.rb'
-
 # Offense count: 6
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.

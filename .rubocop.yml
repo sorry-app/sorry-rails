@@ -12,3 +12,8 @@ Metrics/BlockLength:
   Exclude:
     # Allow long blocks in tests.
     - 'spec/**/*.rb'
+
+Layout/EmptyLinesAroundBlockBody:
+  Exclude:
+    # Allow gapped blocks in tests.
+    - 'spec/**/*.rb'
