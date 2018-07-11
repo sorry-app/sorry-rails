@@ -16,6 +16,7 @@ module Sorry
         PLUGIN_VERSION = '4.latest'.freeze
 
         class << self
+
             # Attr to store the configuration.
             attr_accessor :configuration
 
@@ -30,6 +31,7 @@ module Sorry
                 # Return the config.
                 self.configuration
             end
+
         end
 
     end
