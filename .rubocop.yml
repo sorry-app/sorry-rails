@@ -20,3 +20,6 @@ Layout/EmptyLinesAroundBlockBody:
 
 Layout/EmptyLinesAroundClassBody:
   EnforcedStyle: empty_lines_except_namespace
+
+Layout/EmptyLinesAroundModuleBody:
+  EnforcedStyle: empty_lines_except_namespace
