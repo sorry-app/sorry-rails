@@ -13,6 +13,8 @@ Gem::Specification.new do |spec|
     spec.homepage      = 'https://github.com/sorry-app/sorry-rails'
     spec.license       = 'MIT'
 
+    spec.files         = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
+
     spec.add_development_dependency 'bundler'
     spec.add_development_dependency 'faker'
     spec.add_development_dependency 'rake'
