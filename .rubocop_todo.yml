@@ -8,13 +8,6 @@
 
 # Offense count: 1
 # Cop supports --auto-correct.
-# Configuration parameters: .
-# SupportedStyles: compact, exploded
-Style/RaiseArgs:
-  EnforcedStyle: compact
-
-# Offense count: 1
-# Cop supports --auto-correct.
 # Configuration parameters: MinSize.
 # SupportedStyles: percent, brackets
 Style/SymbolArray:

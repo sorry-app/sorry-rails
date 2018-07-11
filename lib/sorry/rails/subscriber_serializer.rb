@@ -71,7 +71,7 @@ module Sorry
                 # See if the attributes are serializeable.
                 unless serializeable_attributes?(serializeable_attributes)
                     # They're not, so throw an error.
-                    raise UnserializableAttributeError.new("The attributes (#{(serializeable_attributes - SERIALIZEABLE_ATTRIBUTES)}) are not included in the approved list.")
+                    raise UnserializableAttributeError, "The attributes (#{(serializeable_attributes - SERIALIZEABLE_ATTRIBUTES)}) are not included in the approved list."
                 end
             end
 
