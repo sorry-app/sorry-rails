@@ -104,17 +104,6 @@ Style/BracesAroundHashParameters:
   Exclude:
     - 'spec/sorry/rails/script_tag_helper_spec.rb'
 
-# Offense count: 5
-Style/Documentation:
-  Exclude:
-    - 'spec/**/*'
-    - 'test/**/*'
-    - 'lib/sorry/rails.rb'
-    - 'lib/sorry/rails/configuration.rb'
-    - 'lib/sorry/rails/railtie.rb'
-    - 'lib/sorry/rails/script_tag_helper.rb'
-    - 'lib/sorry/rails/subscriber_serializer.rb'
-
 # Offense count: 2
 # Configuration parameters: MinBodyLength.
 Style/GuardClause:

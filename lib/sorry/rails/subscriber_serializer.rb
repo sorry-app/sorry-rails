@@ -2,6 +2,11 @@ require 'json'
 
 module Sorry
     module Rails
+        #
+        # Serializer class takes the applications current_user
+        # and converts it into a safe JSON payload to be included
+        # in the plugin and sent to Sorry as a subscriber.
+        #
         class SubscriberSerializer
 
             # Define serializeable fields.

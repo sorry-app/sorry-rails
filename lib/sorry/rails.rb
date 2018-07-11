@@ -5,6 +5,10 @@ require 'sorry/rails/railtie' if defined?(::Rails::Railtie)
 require 'sorry/rails/version'
 
 module Sorry
+    #
+    # Mail rails plugin definition for
+    # the Sorry gem.
+    #
     module Rails
 
         # Define the JS plugin version to be used

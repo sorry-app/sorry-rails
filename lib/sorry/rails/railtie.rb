@@ -1,5 +1,10 @@
 module Sorry
     module Rails
+        #
+        # Railtie loads the script tag helper into
+        # action view so we can inject the JS into
+        # the host applications templates.
+        #
         class Railtie < ::Rails::Railtie
 
             # On initialization.

@@ -2,6 +2,10 @@ require 'hashie/dash'
 
 module Sorry
     module Rails
+        #
+        # Configuration class is a glorified hash
+        # for storing settings to be used by the plugin.
+        #
         class Configuration < Hashie::Dash
 
             # Define the properties in the config hash.

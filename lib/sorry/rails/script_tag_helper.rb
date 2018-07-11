@@ -3,6 +3,10 @@ require 'action_view'
 
 module Sorry
     module Rails
+        #
+        # An ActionView helper which generates the JavaScript
+        # includes required for the plugin to work.
+        #
         module ScriptTagHelper
 
             # Base rails helpers we utilize.
