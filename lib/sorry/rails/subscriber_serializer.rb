@@ -42,53 +42,51 @@ module Sorry
                 attributes.compact.to_json
             end
 
+            #
+            # The value of the attribute can come
+            # from a proc, or from a custom field, or
+            # by looking for a direct attribute on the user.
+            #
+            def attribute_value(attribute)
+                # Get the configured method for the attribute.
+                attribute_method = Sorry::Rails.configuration.fetch("#{attribute}_method")
+
+                # See if the method is a proc.
+                if attribute_method.respond_to?(:call)
+                    # It's a proc, call it with the model.
+                    attribute_method.call(@current_user)
+                # See if the instance responds to it.
+                elsif @current_user.respond_to?(attribute_method)
+                    # It's a method name, invoke
+                    # the method on the model.
+                    @current_user.public_send(attribute_method)
+                end
+            end
+
+            #
+            # Check attributes are serializeable and throw an exception
+            # if they're not included in SERIALIZEABLE_ATTRIBUTES
+            #
+            def serializeable_attributes!(serializeable_attributes)
+                # See if the attributes are serializeable.
+                unless serializeable_attributes?(serializeable_attributes)
+                    # They're not, so throw an error.
+                    raise UnserializableAttributeError.new("The attributes (#{(serializeable_attributes - SERIALIZEABLE_ATTRIBUTES)}) are not included in the approved list.")
+                end
+            end
+
+            #
+            # Determine if a collection of attribute names
+            # can be serialized or not.
+            #
+            def serializeable_attributes?(serializeable_attributes)
+                # Check that all appear in SERIALIZEABLE_ATTRIBUTES
+                (serializeable_attributes - SERIALIZEABLE_ATTRIBUTES).empty?
+            end
+
             # Custom error for when someone asks to serialize an
             # attribute not listed in SERIALIZEABLE_ATTRIBUTES.
             class UnserializableAttributeError < StandardError; end
-
-            private
-
-                #
-                # The value of the attribute can come
-                # from a proc, or from a custom field, or
-                # by looking for a direct attribute on the user.
-                #
-                def attribute_value(attribute)
-                    # Get the configured method for the attribute.
-                    attribute_method = Sorry::Rails.configuration.fetch("#{attribute}_method")
-
-                    # See if the method is a proc.
-                    if attribute_method.respond_to?(:call)
-                        # It's a proc, call it with the model.
-                        attribute_method.call(@current_user)
-                    # See if the instance responds to it.
-                    elsif @current_user.respond_to?(attribute_method)
-                        # It's a method name, invoke
-                        # the method on the model.
-                        @current_user.public_send(attribute_method)
-                    end
-                end
-
-                #
-                # Check attributes are serializeable and throw an exception
-                # if they're not included in SERIALIZEABLE_ATTRIBUTES
-                #
-                def serializeable_attributes!(serializeable_attributes)
-                    # See if the attributes are serializeable.
-                    unless serializeable_attributes?(serializeable_attributes)
-                        # They're not, so throw an error.
-                        raise UnserializableAttributeError.new("The attributes (#{(serializeable_attributes - SERIALIZEABLE_ATTRIBUTES)}) are not included in the approved list.")
-                    end
-                end
-
-                #
-                # Determine if a collection of attribute names
-                # can be serialized or not.
-                #
-                def serializeable_attributes?(serializeable_attributes)
-                    # Check that all appear in SERIALIZEABLE_ATTRIBUTES
-                    (serializeable_attributes - SERIALIZEABLE_ATTRIBUTES).empty?
-                end
 
         end
     end

@@ -55,7 +55,7 @@ RSpec.describe Sorry::Rails::SubscriberSerializer do
 
                     context 'when the default method' do
                         # Mock the attribute method on the model.
-                         before(:each) { allow(current_user).to receive(attribute).and_return(Faker::Lorem.sentence) }
+                        before(:each) { allow(current_user).to receive(attribute).and_return(Faker::Lorem.sentence) }
 
                         # Is the users own attribute.
                         it { is_expected.to eq(current_user.send(attribute)) }
