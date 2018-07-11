@@ -54,7 +54,7 @@ module Sorry
                     # object for them as a subscriber.
                     javascript_tag id: 'sorry-subscriber-data' do
                         # Include the subscriber payload on the window.
-                        "window.SorryAPIOptions = { \"subscriber\": #{subscriber_payload} };".html_safe # rubocop:disable OutputSafety
+                        "window.SorryAPIOptions = { \"subscriber\": #{subscriber_payload} };".html_safe
                     end
                 end
             end

@@ -8,7 +8,7 @@ RSpec.describe Sorry::Rails::ScriptTagHelper, type: :helper do
 
     describe '#sorry_script_tag' do
         # Get the resulting tag for testing.
-        subject { sorry_script_tag({ 'page_id' => page_id }) }
+        subject { sorry_script_tag('page_id' => page_id) }
 
         # Expect string return.
         it { is_expected.to be_a(String) }
