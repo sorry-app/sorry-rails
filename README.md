@@ -39,6 +39,38 @@ You can now use the helper method to include the appropriate JavaScript into you
 
 You'll most likely want to add this to `application.html.erb` so it displays on all pages.
 
+## Subscriber Data
+
+By default the plugin plays nicely with [Devise](https://github.com/plataformatec/devise) by looking for a method called `current_user`, if this method returns an object with an `email` attribute they are passed along as a subscriber, so they'll appear in your subscribers list.
+
+#### Custom current user method
+
+If you don't use Devise, or it's default `current_user` method, you can customize the method name in your initializer.
+
+```ruby
+config.current_user_method = :logged_in_user
+```
+
+Pass a symbol which represents the method name, and we'll call that.
+
+#### Subscribing to specific components (Established Plan Only)
+
+Sometimes users don't utilize all of your application, and they'll only want updates about incidents which affect the parts they actually use. For example, if one of our customers uses our Mailgun integration, but Sendgrid is currently experiencing issues, they don't need to know.
+
+You can pass us an array of component_ids that the subscriber is interested in.
+
+```ruby
+# Method name example.
+config.component_ids_method = :component_ids
+
+# Proc based example.
+config.component_ids_method = Proc.new { |user| 
+    # Logic here to get array of IDs...
+}
+```
+
+As per the example, this can either be a method_name to be called on your current_user, or a Proc which is passed the current user, both should return an array of numeric component ids.
+
 ## Contributing
 
 In lieu of a formal style-guide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code.
