@@ -1,39 +1,73 @@
-# Sorry::Rails
+# Sorry™ - Rails
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/sorry/rails`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+> A Rails gem to add the [Sorry™](https://www.sorryapp.com/) website plugin to your application. Easily display notices from your status page to your users, and register them as subscribers to receive updates when the particular parts of your application they use are experiencing issues.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+#### Install the Gem
+
+Add the gem to your Gemfile.
 
 ```ruby
 gem 'sorry-rails'
 ```
 
-And then execute:
+Once this has been done you can run `bundle install` to install the gem into your bundle.
 
-    $ bundle
+#### Create an Initializer
 
-Or install it yourself as:
+Create an initializer to configure your plugin, we'd suggest putting this in `/config/initializers/sorry-rails.rb`.
 
-    $ gem install sorry-rails
+```ruby
+# Configure website plugin.
+Sorry::Rails.configure do |config|
+    # Set the page identity.
+    config.page_id = 'xxxxxxxx'
+end
+```
 
-## Usage
+Place your own status page ID into the initializer, so the plugin knows where to pull your updates from.
 
-TODO: Write usage instructions here
+#### Include the JavaScript
 
-## Development
+You can now use the helper method to include the appropriate JavaScript into your layouts and views.
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+```erb
+<!-- Plugin to install status notices. -->
+<%= sorry_script_tag %>
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+You'll most likely want to add this to `application.html.erb` so it displays on all pages.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/sorry-rails.
+In lieu of a formal style-guide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code.
 
-## License
+Once you are happy that your contribution is ready for production please send us a pull request, at which point we'll review the code and merge it in.
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+## Versioning
+
+For transparency and insight into our release cycle, and for striving to maintain backward compatibility, This project will be maintained under the Semantic Versioning guidelines as much as possible.
+
+Releases will be numbered with the following format:
+
+`<major>.<minor>.<patch>`
+
+And constructed with the following guidelines:
+
+* Breaking backward compatibility bumps the major (and resets the minor and patch)
+* New additions without breaking backward compatibility bumps the minor (and resets the patch)
+* Bug fixes and misc changes bumps the patch
+
+For more information on SemVer, please visit <http://semver.org/>.
+
+## Authors & Contributors
+
+**Robert Rawlins**
+
++ <http://twitter.com/sirrawlins>
++ <https://github.com/SirRawlins>
+
+## Copyright
+
+&copy; Copyright - See [LICENSE](LICENSE) for details.
