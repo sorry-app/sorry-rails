@@ -1,5 +1,7 @@
 # Sorry™ - Rails
 
+[![Build Status](https://travis-ci.org/sorry-app/sorry-rails.svg?branch=master)](https://travis-ci.org/sorry-app/sorry-rails)
+
 > A Rails gem to add the [Sorry™ Website Plugin](https://github.com/sorry-app/status-bar) to your application. Easily display notices from your status page to your users, and register them as subscribers to receive updates when the particular parts of your application they use are experiencing issues.
 
 ## Installation
