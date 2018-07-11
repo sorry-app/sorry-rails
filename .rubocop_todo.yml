@@ -28,15 +28,6 @@ Layout/CommentIndentation:
 Layout/IndentHash:
   EnforcedStyle: consistent
 
-# Offense count: 4
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: normal, rails
-Layout/IndentationConsistency:
-  Exclude:
-    - 'lib/sorry/rails/subscriber_serializer.rb'
-    - 'spec/sorry/rails/subscriber_serializer_spec.rb'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: IndentationWidth.
