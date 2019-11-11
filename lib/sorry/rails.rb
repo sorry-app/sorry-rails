@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'sorry/rails/configuration'
 require 'sorry/rails/script_tag_helper'
 require 'sorry/rails/subscriber_serializer'
@@ -13,7 +15,7 @@ module Sorry
 
         # Define the JS plugin version to be used
         # by the script tag generator.
-        PLUGIN_VERSION = '4.latest'.freeze
+        PLUGIN_VERSION = '4.latest'
 
         class << self
 

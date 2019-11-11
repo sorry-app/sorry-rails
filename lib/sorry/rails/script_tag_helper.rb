@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'active_support/all'
 require 'action_view'
 
@@ -31,10 +33,10 @@ module Sorry
                 # Build the JavaScript tag for the plugin include.
                 # Use the latest JS version defined in the plugin.
                 javascript_include_tag "https://code.sorryapp.com/status-bar/#{Sorry::Rails::PLUGIN_VERSION}/status-bar.min.js",
-                    # Define the pages identity.
-                    data: { for: options.fetch('page_id') },
-                    # Load asynchronously.
-                    async: true
+                                       # Define the pages identity.
+                                       data: { for: options.fetch('page_id') },
+                                       # Load asynchronously.
+                                       async: true
             end
 
             def sorry_script_payload_tag(options)
