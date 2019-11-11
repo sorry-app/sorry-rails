@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Sorry::Rails::ScriptTagHelper, type: :helper do
 
     # Include the helper methods for testing.

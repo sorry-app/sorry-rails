@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Sorry::Rails::Configuration do
 
     # Get an instance for testing.
