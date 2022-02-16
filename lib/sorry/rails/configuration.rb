@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'hashie/dash'
+require 'hashie'
 
 module Sorry
     module Rails
@@ -9,6 +9,7 @@ module Sorry
         # for storing settings to be used by the plugin.
         #
         class Configuration < Hashie::Dash
+            include Hashie::Extensions::IndifferentAccess
 
             # Define the properties in the config hash.
             property :page_id
