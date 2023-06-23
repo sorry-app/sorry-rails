@@ -7,10 +7,11 @@ RSpec.describe Sorry::Rails::ScriptTagHelper, type: :helper do
 
     # Mock a page identity to be used.
     let(:page_id) { Faker::Lorem.characters(8) }
+    let(:script_nonce) { SecureRandom.hex }
 
     describe '#sorry_script_tag' do
         # Get the resulting tag for testing.
-        subject { sorry_script_tag('page_id' => page_id) }
+        subject { sorry_script_tag('page_id' => page_id, 'nonce' => script_nonce) }
 
         # Expect string return.
         it { is_expected.to be_a(String) }
@@ -21,7 +22,8 @@ RSpec.describe Sorry::Rails::ScriptTagHelper, type: :helper do
                 # Pointing at the latest version.
                 src: "https://code.sorryapp.com/status-bar/#{Sorry::Rails::PLUGIN_VERSION}/status-bar.min.js",
                 # With the configured page identity.
-                'data-for': page_id
+                'data-for': page_id,
+                nonce: script_nonce
             })
         }
 

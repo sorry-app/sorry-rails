@@ -21,27 +21,44 @@ module Sorry
             # and register them as a subscriber.
             #
             def sorry_script_tag(options = {})
-                # Merge configuration in options.
-                options.reverse_merge!(Sorry::Rails.configuration)
-
                 # Include the payload tag and the include
                 # tags for the plugin.
-                safe_join([sorry_script_payload_tag(options), sorry_script_include_tag(options)])
+                safe_join(
+                    [
+                        sorry_script_payload_tag(options), 
+                        sorry_script_include_tag(options)
+                    ]
+                )
             end
 
             def sorry_script_include_tag(options)
+                # Pull the target page from the options, default to config.
+                page_id = options.fetch(
+                    'page_id',
+                    Sorry::Rails.configuration['page_id']
+                )
+                # Merge in default options for the 'script' tag.
+                options.reverse_merge!(
+                    async: true,
+                    data: {
+                        for: page_id
+                    }
+                )
+
                 # Build the JavaScript tag for the plugin include.
                 # Use the latest JS version defined in the plugin.
-                javascript_include_tag "https://code.sorryapp.com/status-bar/#{Sorry::Rails::PLUGIN_VERSION}/status-bar.min.js",
-                                       # Define the pages identity.
-                                       data: { for: options.fetch('page_id') },
-                                       # Load asynchronously.
-                                       async: true
+                javascript_include_tag(
+                    "https://code.sorryapp.com/status-bar/#{Sorry::Rails::PLUGIN_VERSION}/status-bar.min.js",
+                    options
+                )
             end
 
             def sorry_script_payload_tag(options)
-                # Get the method name
-                current_user_method = options.fetch('current_user_method')
+                # Get the method name from options, default to config.
+                current_user_method = options.fetch(
+                    'current_user_method',
+                    Sorry::Rails.configuration['current_user_method']
+                )
 
                 # See if the current user is signed in, so we can
                 # include them as a subscriber.
@@ -54,7 +71,7 @@ module Sorry
 
                     # We have a user method, let's include the JS payload
                     # object for them as a subscriber.
-                    javascript_tag id: 'sorry-subscriber-data' do
+                    javascript_tag options.merge(id: 'sorry-subscriber-data') do
                         # Include the subscriber payload on the window.
                         "window.SorryAPIOptions = { \"subscriber\": #{subscriber_payload} };".html_safe
                     end
