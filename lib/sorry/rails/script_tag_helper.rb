@@ -15,6 +15,7 @@ module Sorry
             include ActionView::Context
             include ActionView::Helpers::AssetTagHelper
             include ActionView::Helpers::JavaScriptHelper
+
             #
             # Generate the Sorry Website Plugin script
             # tag to display status notices to the user
@@ -25,7 +26,7 @@ module Sorry
                 # tags for the plugin.
                 safe_join(
                     [
-                        sorry_script_payload_tag(options), 
+                        sorry_script_payload_tag(options),
                         sorry_script_include_tag(options)
                     ]
                 )
