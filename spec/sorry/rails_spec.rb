@@ -4,7 +4,7 @@ RSpec.describe Sorry::Rails do
 
     describe '#configure' do
         # Mock some detailed to pass to the config.
-        let(:page_id) { Faker::Lorem.characters(8) }
+        let(:page_id) { Faker::Lorem.characters(number: 8) }
 
         context 'when passed a block' do
             subject do

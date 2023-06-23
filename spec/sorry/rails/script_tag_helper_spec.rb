@@ -6,7 +6,7 @@ RSpec.describe Sorry::Rails::ScriptTagHelper, type: :helper do
     include described_class
 
     # Mock a page identity to be used.
-    let(:page_id) { Faker::Lorem.characters(8) }
+    let(:page_id) { Faker::Lorem.characters(number: 8) }
     let(:script_nonce) { SecureRandom.hex }
 
     describe '#sorry_script_tag' do
