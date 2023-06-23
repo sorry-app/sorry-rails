@@ -9,6 +9,7 @@ module Sorry
         # for storing settings to be used by the plugin.
         #
         class Configuration < Hashie::Dash
+
             include Hashie::Extensions::IndifferentAccess
 
             # Define the properties in the config hash.

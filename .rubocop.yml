@@ -4,6 +4,9 @@ Layout/IndentationWidth:
 Metrics/LineLength:
   Max: 200
 
+Metrics/MethodLength:
+  Max: 15
+
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
